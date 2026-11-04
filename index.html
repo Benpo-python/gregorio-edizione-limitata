@@ -278,7 +278,7 @@ footer .marchio{color:var(--avorio);font-size:1.1rem}
    <div class="campo"><label for="f">Flessioni di fila</label><select id="f"><option>Più di lui (almeno 4)</option><option>Come lui (3)</option><option>Meno di lui</option></select></div>
    <label class="check campo pieno"><input type="checkbox" required> Accetto di ascoltare almeno un vocale di quattro minuti senza lamentarmi.</label>
    <label class="check campo pieno"><input type="checkbox" required> Accetto che alle 22:30 lui dormirà.</label>
-   <div class="campo pieno"><button class="btn btn-p" style="align-self:flex-start">Invia la candidatura</button></div>
+   <div class="campo pieno"><button class="btn btn-p" style="align-self:flex-start">Invia la candidatura su WhatsApp</button></div>
    <div class="esito" id="esito"></div>
   </form>
  </div>
@@ -300,7 +300,10 @@ var g=["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabat
 for(var i=1;i<=7;i++){var d=i%7,el=document.createElement("div");el.className="g"+(d===oggi?" oggi":"");el.innerHTML="<b>"+g[d]+"</b><span>"+cosa[d]+"</span>";box.appendChild(el)}
 document.getElementById("stato").textContent=(h>=22||h<8)?"Dorme · sono le "+h:"Disponibile ora";
 document.getElementById("modulo").addEventListener("submit",function(e){e.preventDefault();var es=document.getElementById("esito");
- es.style.display="block";es.textContent="Candidatura ricevuta. La commissione risponderà entro tre-cinque anni lavorativi.";});
+ var t="Buongiorno Gregorio, invio la mia candidatura ufficiale per un aperitivo.\n\nNome: "+document.getElementById("n").value+"\nPorto: "+document.getElementById("c").value+"\nFlessioni di fila: "+document.getElementById("f").value+"\n\nAccetto i vocali da quattro minuti e accetto che alle 22:30 dormirai. Attendo l'esito della commissione (tu e tua madre).";
+ var n=["39","334","876","5142"].join("");
+ es.style.display="block";es.textContent="Candidatura pronta. Si apre WhatsApp: premi Invia per consegnarla alla commissione.";
+ window.open("https://wa.me/"+n+"?text="+encodeURIComponent(t),"_blank");});
 </script>
 </body>
 </html>
